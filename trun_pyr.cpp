@@ -12,10 +12,10 @@ using namespace std;
 
 class Pyramid
 {
-	int bot_base, top_base, height; // initializes variables
 	public:
+	double bot_base, top_base, height; // initializes variables
 	void set_values ();
-	int volume () {return (1/3)*((bot_base*bot_base) + (bot_base*top_base) + (top_base*top_base)) * height;}
+	double volume ();
 };
 
 void Pyramid::set_values ()
@@ -28,10 +28,24 @@ void Pyramid::set_values ()
 	cin >> height;
 }
 
+double Pyramid::volume ()
+{
+	double a, b, c, d, vol;
+	a = bot_base * bot_base;
+	b = bot_base * top_base;
+	c = top_base * top_base;
+	d = 0.3333333333333333333333;
+//	cout << a << " " << b << " " << c << " " << d << endl;
+	vol = (d * (a + b + c) * height);
+//	cout << vol << endl;
+	return vol;
+}
+
 int main ()
 {
 	Pyramid pyra;
 	pyra.set_values ();
+//	cout << "bot_base = " << pyra.bot_base << "  top_base = " << pyra.top_base << "  height = " << pyra.height << endl;
 	cout << "The volume of the pyramid is:  " << pyra.volume() << endl;
 	return 0;
 }
